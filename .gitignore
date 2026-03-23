@@ -1,0 +1,11 @@
+# 敏感文件 - 不提交到 GitHub
+*.bak
+*.tmp
+*.log
+
+# 不备份敏感配置
+config/openclaw/*.bak
+config/openclaw/*.tmp
+
+# 加密后的备份可以提交
+# *.tar.gz
