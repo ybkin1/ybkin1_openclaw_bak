@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "717d2743-027b-41b3-ae5d-beff240fdf6e",
+      "agentId": "master",
+      "sessionKey": "agent:master:main",
+      "name": "OpenClaw System Guardian - 30min Health Scan (Root Cause Analysis)",
+      "enabled": false,
+      "createdAtMs": 1773318381012,
+      "updatedAtMs": 1773331205935,
+      "schedule": {
+        "kind": "cron",
+        "expr": "*/30 * * * *",
+        "tz": "UTC"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "执行OpenClaw System Guardian的30分钟健康扫描：1. 扫描OpenClaw日志，2. 执行整体健康检查，3. **仅在发现故障时**通过飞书上报（无故障不通知），4. **使用RootCauseAnalyzer进行根因分析**，提供临时规避方案和优化解决方案。同时监控自己的扫描日志、校验整体健康、发送通知的行为是否正确执行。所有发现的问题和经验需要记录到memory/knowledge/openclaw-system-guardian.md中。",
+        "model": "qwencode/qwen3-max-2026-01-23",
+        "thinking": "off",
+        "timeoutSeconds": 240
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "webchat"
+      },
+      "state": {
+        "lastRunAtMs": 1773329640069,
+        "lastRunStatus": "error",
+        "lastStatus": "error",
+        "lastDurationMs": 240012,
+        "lastDeliveryStatus": "unknown",
+        "consecutiveErrors": 6,
+        "lastError": "cron: job execution timed out"
+      }
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+[0;32m[INFO][0m Starting unified backup - 20260317_120002 (type: config)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/config (keeping 4)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260318_013001 (type: memory)
+[0;32m[INFO][0m Initializing Git repository...
+Initialized empty Git repository in /root/.openclaw/backups-unified/.git/
+[0;32m[INFO][0m ✓ No new backups, skipping push
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260318_030001 (type: full)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/config (keeping 4)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260318_120001 (type: config)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/config (keeping 4)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260319_013001 (type: memory)
+[0;32m[INFO][0m ✓ No new backups, skipping push
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260319_030001 (type: full)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/config (keeping 4)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260319_120001 (type: config)
+[0;32m[INFO][0m Cleaning up 2 old backups in /root/.openclaw/backups-unified/config (keeping 4)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260320_013002 (type: memory)
+[0;32m[INFO][0m ✓ No new backups, skipping push
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260320_030001 (type: full)
+[0;32m[INFO][0m Backing up agent: main
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/config (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/system (keeping 4)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260320_120002 (type: config)
+[0;32m[INFO][0m Cleaning up 2 old backups in /root/.openclaw/backups-unified/config (keeping 4)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260321_013001 (type: memory)
+[main (root-commit) acfc324] 📦 Unified backup 20260321_013001 (4-retention policy)
+ 54 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 agents/main_20260320_030001.tar.gz
+ create mode 100644 config/config_20260320_030001.tar.gz
+ create mode 100644 config/config_20260320_120002.tar.gz
+ create mode 100644 config/config_agent_master_20260319_120001.tar.gz
+ create mode 100644 config/config_agent_master_20260320_120002.tar.gz
+ create mode 100644 memory/memory_analysis_20260319_080641.tar.gz
+ create mode 100644 memory/memory_analysis_20260319_080647.tar.gz
+ create mode 100644 memory/memory_analysis_20260320_013002.tar.gz
+ create mode 100644 memory/memory_analysis_20260321_013001.tar.gz
+ create mode 100644 memory/memory_assistant_20260319_080641.tar.gz
+ create mode 100644 memory/memory_assistant_20260319_080647.tar.gz
+ create mode 100644 memory/memory_assistant_20260320_013002.tar.gz
+ create mode 100644 memory/memory_assistant_20260321_013001.tar.gz
+ create mode 100644 memory/memory_backup_20260319_080641.tar.gz
+ create mode 100644 memory/memory_backup_20260319_080647.tar.gz
+ create mode 100644 memory/memory_backup_20260320_013002.tar.gz
+ create mode 100644 memory/memory_backup_20260321_013001.tar.gz
+ create mode 100644 memory/memory_customer-service_20260319_080641.tar.gz
+ create mode 100644 memory/memory_customer-service_20260319_080647.tar.gz
+ create mode 100644 memory/memory_customer-service_20260320_013002.tar.gz
+ create mode 100644 memory/memory_customer-service_20260321_013001.tar.gz
+ create mode 100644 memory/memory_database-manager_20260319_080641.tar.gz
+ create mode 100644 memory/memory_database-manager_20260319_080647.tar.gz
+ create mode 100644 memory/memory_database-manager_20260320_013002.tar.gz
+ create mode 100644 memory/memory_database-manager_20260321_013001.tar.gz
+ create mode 100644 memory/memory_file-processor_20260319_080641.tar.gz
+ create mode 100644 memory/memory_file-processor_20260319_080647.tar.gz
+ create mode 100644 memory/memory_file-processor_20260320_013002.tar.gz
+ create mode 100644 memory/memory_file-processor_20260321_013001.tar.gz
+ create mode 100644 memory/memory_master_20260319_080641.tar.gz
+ create mode 100644 memory/memory_master_20260319_080647.tar.gz
+ create mode 100644 memory/memory_master_20260320_013002.tar.gz
+ create mode 100644 memory/memory_master_20260321_013001.tar.gz
+ create mode 100644 memory/memory_memory-manager_20260319_080641.tar.gz
+ create mode 100644 memory/memory_memory-manager_20260319_080647.tar.gz
+ create mode 100644 memory/memory_memory-manager_20260320_013002.tar.gz
+ create mode 100644 memory/memory_memory-manager_20260321_013001.tar.gz
+ create mode 100644 memory/memory_monitoring_20260319_080641.tar.gz
+ create mode 100644 memory/memory_monitoring_20260319_080647.tar.gz
+ create mode 100644 memory/memory_monitoring_20260320_013002.tar.gz
+ create mode 100644 memory/memory_monitoring_20260321_013001.tar.gz
+ create mode 100644 memory/memory_server-maintenance_20260319_080641.tar.gz
+ create mode 100644 memory/memory_server-maintenance_20260319_080647.tar.gz
+ create mode 100644 memory/memory_server-maintenance_20260320_013002.tar.gz
+ create mode 100644 memory/memory_server-maintenance_20260321_013001.tar.gz
+ create mode 100644 memory/memory_shared_20260319_080641.tar.gz
+ create mode 100644 memory/memory_shared_20260319_080647.tar.gz
+ create mode 100644 memory/memory_shared_20260320_013002.tar.gz
+ create mode 100644 memory/memory_shared_20260321_013001.tar.gz
+ create mode 100644 system/pre_migration_20260317_120831.tar.gz
+ create mode 100644 system/system_20260318_030001.tar.gz
+ create mode 100644 system/system_20260319_030001.tar.gz
+ create mode 100644 system/system_20260319_080650.tar.gz
+ create mode 100644 system/system_20260320_030001.tar.gz
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[0;32m[INFO][0m ⚠ GitHub push failed (network or SSH key issue)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260321_030001 (type: full)
+[0;32m[INFO][0m Backing up agent: main
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/config (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/system (keeping 4)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260321_120001 (type: config)
+[0;32m[INFO][0m Cleaning up 2 old backups in /root/.openclaw/backups-unified/config (keeping 4)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260322_013001 (type: memory)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[main 7a07303] 📦 Unified backup 20260322_013001 (4-retention policy)
+ 16 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 agents/main_20260321_030001.tar.gz
+ create mode 100644 config/config_20260321_030001.tar.gz
+ create mode 100644 config/config_20260321_120001.tar.gz
+ create mode 100644 config/config_agent_master_20260321_120001.tar.gz
+ create mode 100644 memory/memory_analysis_20260322_013001.tar.gz
+ create mode 100644 memory/memory_assistant_20260322_013001.tar.gz
+ create mode 100644 memory/memory_backup_20260322_013001.tar.gz
+ create mode 100644 memory/memory_customer-service_20260322_013001.tar.gz
+ create mode 100644 memory/memory_database-manager_20260322_013001.tar.gz
+ create mode 100644 memory/memory_file-processor_20260322_013001.tar.gz
+ create mode 100644 memory/memory_master_20260322_013001.tar.gz
+ create mode 100644 memory/memory_memory-manager_20260322_013001.tar.gz
+ create mode 100644 memory/memory_monitoring_20260322_013001.tar.gz
+ create mode 100644 memory/memory_server-maintenance_20260322_013001.tar.gz
+ create mode 100644 memory/memory_shared_20260322_013001.tar.gz
+ create mode 100644 system/system_20260321_030001.tar.gz
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[0;32m[INFO][0m ⚠ GitHub push failed (network or SSH key issue)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260322_030001 (type: full)
+[0;32m[INFO][0m Backing up agent: main
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/config (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/system (keeping 4)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260322_120001 (type: config)
+[0;32m[INFO][0m Cleaning up 2 old backups in /root/.openclaw/backups-unified/config (keeping 4)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260323_013001 (type: memory)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/memory (keeping 4)
+[main 693a910] 📦 Unified backup 20260323_013001 (4-retention policy)
+ 16 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 agents/main_20260322_030001.tar.gz
+ create mode 100644 config/config_20260322_030001.tar.gz
+ create mode 100644 config/config_20260322_120001.tar.gz
+ create mode 100644 config/config_agent_master_20260322_120001.tar.gz
+ create mode 100644 memory/memory_analysis_20260323_013001.tar.gz
+ create mode 100644 memory/memory_assistant_20260323_013001.tar.gz
+ create mode 100644 memory/memory_backup_20260323_013001.tar.gz
+ create mode 100644 memory/memory_customer-service_20260323_013001.tar.gz
+ create mode 100644 memory/memory_database-manager_20260323_013001.tar.gz
+ create mode 100644 memory/memory_file-processor_20260323_013001.tar.gz
+ create mode 100644 memory/memory_master_20260323_013001.tar.gz
+ create mode 100644 memory/memory_memory-manager_20260323_013001.tar.gz
+ create mode 100644 memory/memory_monitoring_20260323_013001.tar.gz
+ create mode 100644 memory/memory_server-maintenance_20260323_013001.tar.gz
+ create mode 100644 memory/memory_shared_20260323_013001.tar.gz
+ create mode 100644 system/system_20260322_030001.tar.gz
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[0;32m[INFO][0m ⚠ GitHub push failed (network or SSH key issue)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260323_030001 (type: full)
+[0;32m[INFO][0m Backing up agent: main
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/config (keeping 4)
+[0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/system (keeping 4)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260323_120001 (type: config)
+[0;32m[INFO][0m Cleaning up 2 old backups in /root/.openclaw/backups-unified/config (keeping 4)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category

@@ -1,0 +1,133 @@
+{
+  "version": "1.0.0",
+  "created": "2026-03-09T19:05:00+08:00",
+  "description": "OpenClaw 完整系统备份清单 - 包含所有配置、技能、模型、记忆、学习数据",
+  "categories": {
+    "core_config": {
+      "name": "核心配置文件",
+      "files": [
+        "~/.openclaw/openclaw.json",
+        "~/.openclaw/package.json",
+        "~/.bashrc",
+        "~/.profile",
+        "/etc/crontab",
+        "/etc/sysconfig/openclaw",
+        "/root/.openclaw/agents/master/SOUL.md",
+        "/root/.openclaw/agents/master/AGENTS.md",
+        "/root/.openclaw/agents/master/USER.md",
+        "/root/.openclaw/agents/master/TOOLS.md",
+        "/root/.openclaw/agents/master/IDENTITY.md",
+        "/root/.openclaw/agents/master/MEMORY.md"
+      ]
+    },
+    "branch_agents": {
+      "name": "分支机器人配置",
+      "files": [
+        "/root/.openclaw/agents/fault/SOUL.md",
+        "/root/.openclaw/agents/fault/AGENTS.md",
+        "/root/.openclaw/agents/fault/USER.md",
+        "/root/.openclaw/agents/fault/TOOLS.md",
+        "/root/.openclaw/agents/fault/IDENTITY.md",
+        "/root/.openclaw/agents/media/SOUL.md",
+        "/root/.openclaw/agents/media/AGENTS.md",
+        "/root/.openclaw/agents/media/USER.md",
+        "/root/.openclaw/agents/media/TOOLS.md",
+        "/root/.openclaw/agents/media/IDENTITY.md",
+        "/root/.openclaw/agents/stock/SOUL.md",
+        "/root/.openclaw/agents/stock/AGENTS.md",
+        "/root/.openclaw/agents/stock/USER.md",
+        "/root/.openclaw/agents/stock/TOOLS.md",
+        "/root/.openclaw/agents/stock/IDENTITY.md"
+      ]
+    },
+    "workspace_files": {
+      "name": "工作区文件",
+      "files": [
+        "/root/.openclaw/workspace/SOUL.md",
+        "/root/.openclaw/workspace/AGENTS.md",
+        "/root/.openclaw/workspace/USER.md",
+        "/root/.openclaw/workspace/TOOLS.md",
+        "/root/.openclaw/workspace/IDENTITY.md",
+        "/root/.openclaw/workspace/MEMORY.md",
+        "/root/.openclaw/workspace/HEARTBEAT.md",
+        "/root/.openclaw/workspace/BOOTSTRAP.md"
+      ]
+    },
+    "architecture_docs": {
+      "name": "架构文档",
+      "files": [
+        "/root/.openclaw/workspace/docs/DISASTER-RECOVERY-BACKUP-SYSTEM.md",
+        "/root/.openclaw/workspace/docs/P0-FIX-AND-DISASTER-RECOVERY-COMPLETE.md",
+        "/root/.openclaw/workspace/docs/feishu-bot-guide-from-user.txt",
+        "/root/.openclaw/workspace/memory/README.md",
+        "/root/.openclaw/workspace/memory/INDEX.md"
+      ]
+    },
+    "skills_inventory": {
+      "name": "技能清单",
+      "files": [
+        "/root/.openclaw/extensions/qqbot/_meta.json",
+        "/root/.openclaw/extensions/dingtalk/_meta.json",
+        "/root/.openclaw/extensions/wecom/_meta.json",
+        "/root/.openclaw/extensions/adp-openclaw/_meta.json",
+        "/root/.openclaw/extensions/skillhub/_meta.json",
+        "/root/.openclaw/extensions/feishu-openclaw-plugin/_meta.json"
+      ]
+    },
+    "models_config": {
+      "name": "模型配置",
+      "files": [
+        "/root/.openclaw/workspace/memory/knowledge/models.md",
+        "/root/.openclaw/workspace/memory/config/model-config.md"
+      ]
+    },
+    "memory_data": {
+      "name": "记忆数据",
+      "directories": [
+        "/root/.openclaw/agents/master/memory/",
+        "/root/.openclaw/agents/fault/memory/",
+        "/root/.openclaw/agents/media/memory/",
+        "/root/.openclaw/agents/stock/memory/",
+        "/root/.openclaw/workspace/memory/daily/",
+        "/root/.openclaw/workspace/memory/projects/",
+        "/root/.openclaw/workspace/memory/config/",
+        "/root/.openclaw/workspace/memory/knowledge/",
+        "/root/.openclaw/workspace/memory/decisions/",
+        "/root/.openclaw/workspace/memory/archive/"
+      ]
+    },
+    "learning_data": {
+      "name": "学习数据",
+      "files": [
+        "/root/.openclaw/workspace/.learnings/LEARNINGS.md",
+        "/root/.openclaw/workspace/.learnings/ERRORS.md",
+        "/root/.openclaw/workspace/.learnings/FEATURE_REQUESTS.md",
+        "/root/.openclaw/agents/master/memory/learnings/",
+        "/root/.openclaw/agents/fault/memory/learnings/",
+        "/root/.openclaw/agents/media/memory/learnings/",
+        "/root/.openclaw/agents/stock/memory/learnings/"
+      ]
+    },
+    "scripts_and_tools": {
+      "name": "脚本和工具",
+      "files": [
+        "/root/.openclaw/backups-repo/scripts/01-system-setup.sh",
+        "/root/.openclaw/backups-repo/scripts/02-install-openclaw.sh",
+        "/root/.openclaw/backups-repo/scripts/03-restore-configs.sh",
+        "/root/.openclaw/backups-repo/scripts/04-install-skills.sh",
+        "/root/.openclaw/backups-repo/scripts/05-restore-memory.sh",
+        "/root/.openclaw/backups-repo/scripts/06-setup-docker.sh",
+        "/root/.openclaw/backups-repo/scripts/07-verify-recovery.sh",
+        "/root/.openclaw/workspace/scripts/daily-backup.sh",
+        "/root/.openclaw/workspace/scripts/edit-memory.sh",
+        "/root/.openclaw/workspace/scripts/push-core-files.sh"
+      ]
+    }
+  },
+  "backup_schedule": {
+    "memory": "每天 UTC 17:30 (北京时间 01:30)",
+    "full": "每天 UTC 19:00 (北京时间 03:00)",
+    "config": "每天 UTC 04:00 (北京时间 12:00)"
+  },
+  "recovery_instructions": "系统崩溃后恢复步骤：1. 重装系统和 OpenClaw 2. 克隆此备份仓库 3. 执行 scripts/ 目录下的恢复脚本 4. 验证恢复状态"
+}

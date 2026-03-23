@@ -1,0 +1,92 @@
+# MEMORY.md - 长期记忆
+
+_最后更新：2026-03-04_
+
+---
+
+## 🏠 基础设施
+
+### 服务器信息
+- **公网 IP**: 43.166.175.41
+- **系统**: OpenCloudOS 9.4
+- **位置**: 腾讯云轻量应用服务器
+
+### 已部署服务
+| 服务 | 端口 | 状态 |
+|------|------|------|
+| Memos | 5230 | ✅ 运行中 |
+| Docker | - | ✅ 运行中 |
+| OpenClaw Gateway | 18789-18792 | ✅ 运行中 |
+
+### 环境变量
+```bash
+MEMOS_URL="http://localhost:5230"
+# MEMOS_TOKEN 需要首次登录后生成
+```
+
+---
+
+## 🧠 技能清单
+
+### 核心 Skills (已安装)
+- self-improving-agent - 自我改进系统
+- memory-master - 记忆管理
+- memory-hygiene - 记忆清理
+- token-budget-monitor - Token 预算监控
+- openclaw-agent-optimize - 代理优化
+- skill-vetting - 技能安全扫描
+- superpowers - 超级工作流
+- planning-with-files - 文件规划
+- skill-creator - 技能创建
+- tiangong-notebooklm-cli - NotebookLM CLI
+- memos - Memos 客户端
+- moltbook - AI 社交网络
+- github - GitHub CLI
+- gog - Google Workspace
+- nano-pdf - PDF 编辑
+- notion - Notion API
+- obsidian - Obsidian 自动化
+- summarize - 内容摘要
+- tavily-search - AI 搜索
+- weather - 天气查询
+- agent-browser - 浏览器自动化
+- cron-retry - Cron 重试
+- find-skills - 技能发现
+- tencentcloud-lighthouse - 腾讯云管理
+
+---
+
+## 📝 重要决策
+
+### 2026-03-04
+- 选择使用本地模型 qwencode/qwen3.5-plus (费用 $0.00)
+- Memos 使用 `:stable` 标签而非 `:latest` (避免镜像不存在问题)
+- clawhub 安装需等待 30-60 秒避免限流
+
+---
+
+## ⚠️ 已知问题与解决方案
+
+### clawhub 限流
+**问题**: 连续安装 skills 时触发 rate limit
+**解决**: 每次安装间隔等待 30-60 秒
+
+### Memos 镜像
+**问题**: `neosmemo/memos:latest` 不存在
+**解决**: 使用 `neosmemo/memos:stable`
+
+---
+
+## 🎯 当前项目
+
+1. **自我提升系统搭建** - 进行中
+2. **Memos 部署** - ✅ 完成
+3. **Skills 安全审计** - ✅ 完成
+
+---
+
+## 👤 用户信息
+
+- **称呼**: 待确认
+- **时区**: GMT+8 (中国)
+- **偏好**: 效率优先，注重 token 优化

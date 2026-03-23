@@ -1,0 +1,46 @@
+{
+  "schema": "openclaw-github-backup-manifest-v2",
+  "version": "2.0.0",
+  "updated": "2026-03-17",
+  "retention_policy": {
+    "local": 4,
+    "github": 4,
+    "cleanup_strategy": "oldest_first"
+  },
+  "backup_categories": {
+    "agents": {
+      "path": "agents/",
+      "pattern": "*.tar.gz",
+      "description": "All agent workspace backups",
+      "auto_discover": true,
+      "required_agents": ["main"]
+    },
+    "memory": {
+      "path": "memory/",
+      "pattern": "memory_*.tar.gz",
+      "description": "Memory system backups (layered structure)"
+    },
+    "config": {
+      "path": "config/",
+      "pattern": "config_*.tar.gz",
+      "description": "Configuration files (AGENTS.md, SOUL.md, MEMORY.md, etc.)"
+    },
+    "system": {
+      "path": "system/",
+      "pattern": "system_*.tar.gz",
+      "description": "System-wide backups (skills, crontab, etc.)"
+    }
+  },
+  "github_sync": {
+    "enabled": true,
+    "branch": "main",
+    "commit_prefix": "📦",
+    "push_on_backup": true,
+    "fail_silent": true
+  },
+  "cleanup_schedule": {
+    "local": "on_backup",
+    "github": "on_push",
+    "retention_count": 4
+  }
+}

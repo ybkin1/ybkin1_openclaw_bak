@@ -1,0 +1,27 @@
+# OpenClaw 自动备份 Cron 配置
+# 安装：crontab /tmp/openclaw-crontab
+# 最后更新：2026-03-09
+
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# ==================== 备份任务 ====================
+
+# 每天凌晨 1:30 - 记忆备份 + GitHub 推送（半夜执行，避开对话高峰）
+30 1 * * * /root/.openclaw/backups-repo/backup-sync.sh memory --push >> /var/log/openclaw-backup.log 2>&1
+
+# 每天凌晨 3:00 - 完整备份（本地）
+0 3 * * * /root/.openclaw/backups-repo/backup-sync.sh full >> /var/log/openclaw-backup.log 2>&1
+
+# 每天中午 12:00 - 配置文件备份
+0 12 * * * /root/.openclaw/backups-repo/backup-sync.sh config >> /var/log/openclaw-backup.log 2>&1
+
+# ==================== 心跳检查 ====================
+
+# 每 6 小时心跳检查（9:00, 15:00, 21:00, 3:00）
+0 */6 * * * echo "HEARTBEAT_CHECK $(date)" >> /var/log/openclaw-heartbeat.log 2>&1
+
+# ==================== 日志清理 ====================
+
+# 每周日 4:00 - 清理 30 天前的日志
+0 4 * * 0 find /var/log -name "openclaw*.log" -mtime +30 -delete 2>/dev/null || true

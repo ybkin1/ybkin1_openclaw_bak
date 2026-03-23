@@ -1,0 +1,33 @@
+# OpenClaw 定时任务配置
+# 安装：crontab /root/.openclaw/workspace/crontab.txt
+
+# 环境变量
+SHELL=/bin/bash
+PATH=/root/.nvm/versions/node/v22.22.0/bin:/root/.local/bin:/root/bin:/usr/local/bin:/root/.local/share/pnpm:/usr/bin:/bin:/root/.npm-global/bin:/root/.volta/bin:/root/.asdf/shims:/root/.bun/bin:/root/.fnm/current/bin
+HOME=/root
+
+# ========== 备份任务 ==========
+
+# 每日凌晨 2 点备份核心文件
+0 2 * * * /root/.openclaw/workspace/scripts/daily-backup.sh >> /root/.openclaw/workspace/logs/daily-backup.log 2>&1
+
+# 每日凌晨 3 点推送到 GitHub
+# ⚠️ 请先配置 GIT_REPO_URL 变量
+0 3 * * * cd /root/.openclaw/workspace && ./scripts/push-core-files.sh "GIT_REPO_URL_PLACEHOLDER" >> /root/.openclaw/workspace/logs/github-push.log 2>&1
+
+# 每周日凌晨 4 点完整备份 memory 目录
+0 4 * * 0 tar -czf /root/.openclaw/workspace/backups/weekly/memory-$(date +\%Y\%m\%d).tar.gz -C /root/.openclaw/workspace memory/ >> /root/.openclaw/workspace/logs/weekly-backup.log 2>&1
+
+# ========== 维护任务 ==========
+
+# 每日凌晨 5 点清理过期备份 (30 天前)
+0 5 * * * find /root/.openclaw/workspace/backups -name "*.bak" -mtime +30 -delete 2>/dev/null || true
+0 5 * * * find /root/.openclaw/workspace/backups -name "*.tar.gz" -mtime +30 -delete 2>/dev/null || true
+
+# 每日凌晨 5:30 清理日志 (7 天前)
+30 5 * * * find /root/.openclaw/workspace/logs -name "*.log" -mtime +7 -delete 2>/dev/null || true
+
+# ========== 心跳任务 ==========
+
+# 每 30 分钟心跳检查 (OpenClaw 内部管理)
+# 由 OpenClaw Gateway 自动处理，无需 cron
