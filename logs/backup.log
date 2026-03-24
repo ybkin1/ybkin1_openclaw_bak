@@ -246,3 +246,51 @@ error: failed to push some refs to 'github.com:ybkin1/ybkin1_openclaw_bak.git'
 [0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/config (keeping 4)
 [0;32m[INFO][0m Cleaning up 1 old backups in /root/.openclaw/backups-unified/system (keeping 4)
 [0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - 20260324_120001 (type: config)
+[0;32m[INFO][0m Cleaning up 2 old backups in /root/.openclaw/backups-unified/config (keeping 4)
+[0;32m[INFO][0m Unified backup completed! Retention: 4 backups per category
+[0;32m[INFO][0m Starting unified backup - openclaw_bak_20260324_192156 (type: full)
+[0;32m[INFO][0m Backing up agent: analysis
+[0;32m[INFO][0m Backing up agent: assistant
+[0;32m[INFO][0m Backing up agent: backup
+[0;32m[INFO][0m Backing up agent: customer-service
+[0;32m[INFO][0m Backing up agent: database-manager
+[0;32m[INFO][0m Backing up agent: file-processor
+[0;32m[INFO][0m Backing up agent: memory-manager
+[0;32m[INFO][0m Backing up agent: monitoring
+[0;32m[INFO][0m Backing up agent: server-maintenance
+[0;32m[INFO][0m Backing up agent: main
+[0;32m[INFO][0m Cleaning up 1 old backup bundles (keeping 4 latest)
+[0;32m[INFO][0m Deleting: openclaw_bak_20260324_191453
+[main 4ba12bb] 📦 Backup bundle: openclaw_bak_20260324_192156 (retention: 4)
+ 26 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 openclaw_bak_20260324_192156/agents/analysis_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/agents/assistant_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/agents/backup_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/agents/customer-service_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/agents/database-manager_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/agents/file-processor_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/agents/main_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/agents/memory-manager_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/agents/monitoring_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/agents/server-maintenance_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/config/config_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/config/config_agent_master_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/memory/memory_analysis_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/memory/memory_assistant_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/memory/memory_backup_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/memory/memory_customer-service_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/memory/memory_database-manager_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/memory/memory_file-processor_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/memory/memory_main_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/memory/memory_master_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/memory/memory_memory-manager_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/memory/memory_monitoring_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/memory/memory_server-maintenance_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/memory/memory_shared_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/system/system_20260324_192156.tar.gz
+ create mode 100644 openclaw_bak_20260324_192156/system/systemd_overrides_20260324_192156.tar.gz
+To github.com:ybkin1/ybkin1_openclaw_bak.git
+   395f92c..4ba12bb  main -> main
+[0;32m[INFO][0m ✓ GitHub sync successful
+[0;32m[INFO][0m Unified backup completed! Bundle: /root/.openclaw/backups-unified/openclaw_bak_20260324_192156 (retain latest 4 bundles)
