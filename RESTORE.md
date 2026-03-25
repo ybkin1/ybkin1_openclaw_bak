@@ -1,7 +1,63 @@
 # 🔄 OpenClaw 备份恢复指南
 
-**版本**: 1.0 (2026-03-25 创建)  
+**版本**: 2.0 (2026-03-25 更新)  
 **适用备份**: `openclaw_bak_<timestamp>/` bundle 结构
+
+---
+
+## 🚀 一键恢复（推荐！）
+
+**适用场景**: 新服务器迁移、灾难恢复
+
+### 方法 A: 直接执行（最简单）
+
+```bash
+# 在新服务器上执行（需要 root 权限）
+curl -fsSL https://raw.githubusercontent.com/ybkin1/ybkin1_openclaw_bak/main/restore-from-github.sh | bash
+```
+
+或
+
+```bash
+# 如果 curl 不可用
+wget -O restore.sh https://raw.githubusercontent.com/ybkin1/ybkin1_openclaw_bak/main/restore-from-github.sh
+bash restore.sh
+```
+
+### 方法 B: 手动下载执行
+
+```bash
+# 1. 克隆备份仓库
+git clone git@github.com:ybkin1/ybkin1_openclaw_bak.git /tmp/openclaw_restore
+cd /tmp/openclaw_restore
+
+# 2. 执行恢复脚本
+bash restore-from-github.sh
+```
+
+### 自动恢复内容
+
+- ✅ 环境检查（Node.js, pnpm, git, openclaw CLI）
+- ✅ 克隆 GitHub 备份仓库
+- ✅ 选择最新备份 bundle
+- ✅ 验证备份完整性
+- ✅ 恢复所有配置文件
+- ✅ 恢复记忆系统
+- ✅ 恢复脚本和 Skills
+- ✅ 恢复 SSH 密钥
+- ✅ 恢复 Systemd 服务
+- ✅ 恢复 Crontab
+- ✅ 启动 OpenClaw 服务
+
+### 恢复后验证
+
+```bash
+# 检查服务状态
+systemctl --user status openclaw-gateway
+
+# 发送测试消息
+# 检查飞书连接
+```
 
 ---
 
