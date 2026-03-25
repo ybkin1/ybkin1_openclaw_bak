@@ -294,3 +294,49 @@ To github.com:ybkin1/ybkin1_openclaw_bak.git
    395f92c..4ba12bb  main -> main
 [0;32m[INFO][0m ✓ GitHub sync successful
 [0;32m[INFO][0m Unified backup completed! Bundle: /root/.openclaw/backups-unified/openclaw_bak_20260324_192156 (retain latest 4 bundles)
+[0;32m[INFO][0m Starting unified backup - openclaw_bak_20260325_033001 (type: full)
+[0;32m[INFO][0m Backing up agent: analysis
+[0;32m[INFO][0m Backing up agent: assistant
+[0;32m[INFO][0m Backing up agent: backup
+[0;32m[INFO][0m Backing up agent: customer-service
+[0;32m[INFO][0m Backing up agent: database-manager
+[0;32m[INFO][0m Backing up agent: file-processor
+[0;32m[INFO][0m Backing up agent: memory-manager
+[0;32m[INFO][0m Backing up agent: monitoring
+[0;32m[INFO][0m Backing up agent: server-maintenance
+[0;32m[INFO][0m Backing up agent: main
+[0;32m[INFO][0m Cleaning up 1 old backup bundles (keeping 4 latest)
+[0;32m[INFO][0m Deleting: openclaw_bak_20260324_192156
+[main 42b9a60] 📦 Backup bundle: openclaw_bak_20260325_033001 (retention: 4)
+ 27 files changed, 235 insertions(+)
+ create mode 100644 openclaw_bak_20260325_033001/agents/analysis_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/agents/assistant_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/agents/backup_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/agents/customer-service_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/agents/database-manager_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/agents/file-processor_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/agents/main_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/agents/memory-manager_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/agents/monitoring_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/agents/server-maintenance_20260325_033001.tar.gz
+ create mode 100755 openclaw_bak_20260325_033001/config/backup-manager.sh
+ create mode 100644 openclaw_bak_20260325_033001/config/config_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/config/config_agent_master_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/memory/memory_analysis_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/memory/memory_assistant_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/memory/memory_backup_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/memory/memory_customer-service_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/memory/memory_database-manager_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/memory/memory_file-processor_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/memory/memory_main_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/memory/memory_master_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/memory/memory_memory-manager_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/memory/memory_monitoring_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/memory/memory_server-maintenance_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/memory/memory_shared_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/system/system_20260325_033001.tar.gz
+ create mode 100644 openclaw_bak_20260325_033001/system/systemd_overrides_20260325_033001.tar.gz
+To github.com:ybkin1/ybkin1_openclaw_bak.git
+   2d1a4cc..42b9a60  main -> main
+[0;32m[INFO][0m ✓ GitHub sync successful
+[0;32m[INFO][0m Unified backup completed! Bundle: /root/.openclaw/backups-unified/openclaw_bak_20260325_033001 (retain latest 4 bundles)
