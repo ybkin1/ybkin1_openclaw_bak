@@ -12,7 +12,20 @@ set -euo pipefail
 #=========== 配置区 ===========
 GITHUB_REPO="git@github.com:ybkin1/ybkin1_openclaw_bak.git"
 GITHUB_HTTPS="https://github.com/ybkin1/ybkin1_openclaw_bak.git"
-TARGET_ROOT="/root/.openclaw"
+
+# 智能检测安装目录（支持自定义路径）
+if [ -n "$OPENCLAW_ROOT" ]; then
+    TARGET_ROOT="$OPENCLAW_ROOT"
+elif [ -d "/root/.openclaw" ]; then
+    TARGET_ROOT="/root/.openclaw"
+elif [ -d "$HOME/.openclaw" ]; then
+    TARGET_ROOT="$HOME/.openclaw"
+elif [ -d "/home/admin/.openclaw" ]; then
+    TARGET_ROOT="/home/admin/.openclaw"
+else
+    TARGET_ROOT="/root/.openclaw"  # 默认值
+fi
+
 TEMP_DIR="/tmp/openclaw_restore_$$"
 BACKUP_DIR="${TARGET_ROOT}/backups-unified"
 
@@ -35,9 +48,12 @@ check_command() {
 }
 
 check_root() {
-    if [ "$(id -u)" != "0" ]; then
-        log_error "请使用 root 用户运行此脚本"
-        exit 1
+    # 如果安装在非 root 目录，不需要 root 权限
+    if [[ "$TARGET_ROOT" == /root/* ]] || [[ "$TARGET_ROOT" == /home/* ]]; then
+        if [ "$(id -u)" != "0" ]; then
+            log_warn "建议使用 root 用户运行，或确保有足够权限"
+            log_info "当前用户：$(whoami), 目标目录：$TARGET_ROOT"
+        fi
     fi
 }
 
