@@ -1,0 +1,10 @@
+Legend: production dependency, optional only, dev only
+
+/root/.local/share/pnpm/global/5
+│
+│   dependencies:
+├── agent-browser@0.22.2
+├── clawhub@0.9.0
+└── openclaw@2026.3.23-2
+
+3 packages
