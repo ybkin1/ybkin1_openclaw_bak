@@ -1,0 +1,52 @@
+# OpenClaw 自动备份 Cron 配置
+# 最后更新：2026-03-24 (Bundle-based + GitHub push)
+
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+NVM_DIR=/root/.nvm
+WORKSPACE=/root/.openclaw/workspace
+
+# ==================== 统一备份任务 ====================
+
+# 每天凌晨 3:30 - 完整备份 + GitHub 推送（保留最新 4 个 bundle）
+30 3 * * * /root/.openclaw/backups-unified/backup-manager.sh full --push >> /root/.openclaw/backups-unified/logs/backup.log 2>&1
+
+# ==================== 心跳检查 ====================
+
+# 每 6 小时心跳检查
+0 */6 * * * echo "HEARTBEAT_CHECK $(date)" >> /var/log/openclaw-heartbeat.log 2>&1
+
+# ==================== 日志清理 ====================
+
+# 每周日 4:00 - 清理 30 天前的系统日志
+0 4 * * 0 find /var/log -name "openclaw*.log" -mtime +30 -delete 2>/dev/null || true
+
+# ==================== Guardian3.0 Modular Monitoring ====================
+
+# Every 30 minutes - Lightweight monitoring (no model/feishu resource usage)
+
+# End of crontab
+*/5 * * * * /root/.openclaw/workspace/agents/master/scripts/task-scheduler.sh >> /root/.openclaw/workspace/agents/master/logs/task-scheduler-cron.log 2>&1
+50 23 * * * /root/.openclaw/workspace/agents/master/scripts/daily-heartbeat.sh >> /var/log/openclaw-heartbeat.log 2>&1
+*/5 * * * * /root/.openclaw/workspace/agents/master/scripts/task-timeout-supervisor.sh
+
+# ==================== 跨天任务持久化机制 ====================
+# 每 5 分钟 - 任务心跳更新
+*/5 * * * * /root/.openclaw/workspace/agents/master/scripts/task-heartbeat.sh >> /root/.openclaw/workspace/agents/master/logs/task-heartbeat.log 2>&1
+
+# 每天 23:00 - 跨天任务暂停
+0 23 * * * /root/.openclaw/workspace/agents/master/scripts/cross-day-scheduler.sh pause >> /root/.openclaw/workspace/agents/master/logs/cross-day-scheduler.log 2>&1
+
+# 每天 08:30 - 跨天任务恢复
+30 8 * * * /root/.openclaw/workspace/agents/master/scripts/cross-day-scheduler.sh resume >> /root/.openclaw/workspace/agents/master/logs/cross-day-scheduler.log 2>&1
+
+# 每 10 分钟 - 僵尸任务检测
+*/10 * * * * /root/.openclaw/workspace/agents/master/scripts/zombie-task-detector.sh >> /root/.openclaw/workspace/agents/master/logs/zombie-task-detector.log 2>&1
+
+# ==================== 任务自动化执行机制 ====================
+# 每日 08:00 - 任务编排（创建当日任务）
+0 8 * * * /root/.openclaw/workspace/agents/master/scripts/task-orchestrator.sh >> /root/.openclaw/workspace/agents/master/logs/task-orchestrator.log 2>&1
+
+# 每 5 分钟 - 任务执行（执行活跃任务）
+*/5 * * * * /root/.openclaw/workspace/agents/master/scripts/task-executor.sh >> /root/.openclaw/workspace/agents/master/logs/task-executor.log 2>&1
+*/10 * * * * /root/.openclaw/workspace/agents/master/scripts/task-progress-reporter.sh >> /root/.openclaw/workspace/agents/master/logs/progress-reporter.log 2>&1 # 每 10 分钟任务进度汇报
