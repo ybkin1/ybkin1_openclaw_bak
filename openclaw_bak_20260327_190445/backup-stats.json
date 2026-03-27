@@ -1,0 +1,13 @@
+{
+    "timestamp": "2026-03-27T19:04:51+08:00",
+    "bundle": "openclaw_bak_20260327_190445",
+    "total_size_bytes": 810620,
+    "total_size_human": "792KiB",
+    "file_count": 35,
+    "breakdown": {
+        "agents": {"bytes": 0, "human": "0B"},
+        "memory": {"bytes": 383967, "human": "375KiB"},
+        "config": {"bytes": 54140, "human": "53KiB"},
+        "system": {"bytes": 372513, "human": "364KiB"}
+    }
+}
