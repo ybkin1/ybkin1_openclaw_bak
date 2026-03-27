@@ -178,6 +178,69 @@ restore_config() {
     fi
 }
 
+#=========== P0 Fix - 2026-03-27: 恢复数据库 ===========
+restore_database() {
+    log_step "恢复数据库（P0 关键修复）..."
+    
+    # 恢复 SQLite 记忆数据库
+    if [ -f "$TEMP_DIR/$LATEST_BACKUP/database/memory.db" ]; then
+        cp "$TEMP_DIR/$LATEST_BACKUP/database/memory.db" \
+           "${TARGET_ROOT}/workspace/agents/master/"
+        log_info "✓ memory.db (SQLite 记忆数据库)"
+    else
+        log_warn "  ⚠ memory.db 不存在，可能需要重新初始化"
+    fi
+    
+    # 恢复 LanceDB 向量库
+    if [ -f "$TEMP_DIR/$LATEST_BACKUP/database/vectors.tar.gz" ]; then
+        tar -xzf "$TEMP_DIR/$LATEST_BACKUP/database/vectors.tar.gz" \
+            -C "${TARGET_ROOT}/workspace/agents/master"
+        log_info "✓ memory_vectors.lance (向量索引)"
+    else
+        log_warn "  ⚠ memory_vectors.lance 不存在，可能需要重新构建索引"
+    fi
+    
+    # 恢复其他 Agent 的数据库
+    for db_file in "$TEMP_DIR/$LATEST_BACKUP/database/"*_memory.db; do
+        [ -f "$db_file" ] || continue
+        local agent_name
+        agent_name=$(basename "$db_file" | sed 's/_memory.db//')
+        
+        if [ -d "${TARGET_ROOT}/workspace/agents/$agent_name" ]; then
+            cp "$db_file" "${TARGET_ROOT}/workspace/agents/$agent_name/"
+            log_info "✓ ${agent_name}_memory.db"
+        fi
+    done
+    
+    log_info "数据库恢复完成"
+}
+
+#=========== P1 Fix - 2026-03-27: 恢复依赖包列表 ===========
+restore_dependencies() {
+    log_step "恢复依赖包列表..."
+    
+    if [ -d "$TEMP_DIR/$LATEST_BACKUP/config/dependencies" ]; then
+        # 显示依赖列表供参考
+        log_info "依赖包列表已恢复，供参考："
+        
+        if [ -f "$TEMP_DIR/$LATEST_BACKUP/config/dependencies/npm_global_packages.txt" ]; then
+            log_info "  ✓ npm 全局包：$(wc -l < "$TEMP_DIR/$LATEST_BACKUP/config/dependencies/npm_global_packages.txt") 个"
+        fi
+        
+        if [ -f "$TEMP_DIR/$LATEST_BACKUP/config/dependencies/pnpm_global_packages.txt" ]; then
+            log_info "  ✓ pnpm 全局包：$(wc -l < "$TEMP_DIR/$LATEST_BACKUP/config/dependencies/pnpm_global_packages.txt") 个"
+        fi
+        
+        if [ -f "$TEMP_DIR/$LATEST_BACKUP/config/dependencies/python_packages.txt" ]; then
+            log_info "  ✓ Python 包：$(wc -l < "$TEMP_DIR/$LATEST_BACKUP/config/dependencies/python_packages.txt") 个"
+        fi
+        
+        log_info "依赖列表已保存到：${TARGET_ROOT}/workspace/dependencies/"
+        mkdir -p "${TARGET_ROOT}/workspace/dependencies"
+        cp -r "$TEMP_DIR/$LATEST_BACKUP/config/dependencies/"* "${TARGET_ROOT}/workspace/dependencies/"
+    fi
+}
+
 #=========== 恢复记忆系统 ===========
 restore_memory() {
     log_step "恢复记忆系统..."
@@ -321,6 +384,8 @@ show_summary() {
     log_info "恢复内容:"
     echo "  ✓ 配置文件 (openclaw.json, AGENTS.md, etc.)"
     echo "  ✓ 记忆系统 (所有 agent memory)"
+    echo "  ✓ 数据库 (memory.db + vectors.lance) [P0 新增]"
+    echo "  ✓ 依赖包列表 (npm/pnpm/python) [P1 新增]"
     echo "  ✓ 脚本工具 (17 个运维脚本)"
     echo "  ✓ Skills (300+ 个技能文件)"
     echo "  ✓ SSH 密钥"
@@ -356,6 +421,8 @@ main() {
     
     restore_config
     restore_memory
+    restore_database  # P0 Fix - 2026-03-27
+    restore_dependencies  # P1 Fix - 2026-03-27
     restore_scripts
     restore_ssh_keys
     restore_systemd

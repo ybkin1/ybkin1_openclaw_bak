@@ -340,3 +340,287 @@ To github.com:ybkin1/ybkin1_openclaw_bak.git
    2d1a4cc..42b9a60  main -> main
 [0;32m[INFO][0m ✓ GitHub sync successful
 [0;32m[INFO][0m Unified backup completed! Bundle: /root/.openclaw/backups-unified/openclaw_bak_20260325_033001 (retain latest 4 bundles)
+[0;32m[INFO][0m Starting unified backup - openclaw_bak_20260326_033001 (type: full)
+[0;32m[INFO][0m ⊘ 跳过 analysis (无变更)
+[0;32m[INFO][0m 备份 assistant (检测到变更)
+[0;32m[INFO][0m ⊘ 跳过 backup (无变更)
+[0;32m[INFO][0m ⊘ 跳过 customer-service (无变更)
+[0;32m[INFO][0m ⊘ 跳过 database-manager (无变更)
+[0;32m[INFO][0m ⊘ 跳过 file-processor (无变更)
+[0;32m[INFO][0m ⊘ 跳过 memory-manager (无变更)
+[0;32m[INFO][0m ⊘ 跳过 monitoring (无变更)
+[0;32m[INFO][0m ⊘ 跳过 server-maintenance (无变更)
+[0;32m[INFO][0m ⊘ 跳过 main (无变更)
+[0;32m[INFO][0m 备份身份认证和扩展配置...
+[0;32m[INFO][0m ✓ identity/ 已备份
+[0;32m[INFO][0m ✓ credentials/ 已备份
+[0;32m[INFO][0m ✓ extensions/ 已备份（不含 node_modules）
+[0;32m[INFO][0m ✓ SSH 密钥已备份
+[0;32m[INFO][0m ✓ systemd 服务文件已备份
+[0;32m[INFO][0m ✓ 迁移恢复脚本已备份
+[0;32m[INFO][0m ✓ 迁移指南已备份
+[0;32m[INFO][0m ✓ 恢复文档已备份
+[0;32m[INFO][0m ✓ 迁移工具包已打包
+[0;32m[INFO][0m 执行分级保留策略清理...
+[0;32m[INFO][0m 保留策略：每日7份 + 每周4份 + 每月12份
+[0;32m[INFO][0m 备份分类：每日8份，每周0份，每月0份
+[0;32m[INFO][0m 清理 1 份超期的每日备份
+[0;32m[INFO][0m 共删除 1 份备份
+[0;32m[INFO][0m 删除：openclaw_bak_20260325_125837
+[0;32m[INFO][0m Verifying backup integrity...
+[0;32m[INFO][0m ✓ assistant_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ config_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ config_agent_master_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ credentials_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ extensions_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ identity_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ ssh_keys_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ systemd_services_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_analysis_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_assistant_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_backup_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_customer-service_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_database-manager_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_file-processor_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_main_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_master_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_memory-manager_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_monitoring_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_server-maintenance_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_shared_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ migration_scripts_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ crontab_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ system_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ systemd_overrides_20260326_033001.tar.gz - OK
+[0;32m[INFO][0m 备份缓存已保存
+[0;32m[INFO][0m 生成备份统计报告...
+[0;32m[INFO][0m 统计报告已生成：/root/.openclaw/backups-unified/openclaw_bak_20260326_033001/backup-stats.json
+[0;32m[INFO][0m Generating checksum manifest...
+[0;32m[INFO][0m Backup verification PASSED: All files intact
+[main 396a317] 📦 Backup bundle: openclaw_bak_20260326_033001 (graded retention: 7d/4w/12m)
+ 74 files changed, 5447 insertions(+)
+ create mode 100644 openclaw_bak_20260325_190324/agents/analysis_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/agents/assistant_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/agents/backup_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/agents/customer-service_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/agents/database-manager_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/agents/file-processor_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/agents/memory-manager_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/agents/monitoring_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/agents/server-maintenance_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/backup-stats.json
+ create mode 100644 openclaw_bak_20260325_190324/checksums.sha256
+ create mode 100644 openclaw_bak_20260325_190324/config/.backup_cache.json
+ create mode 100755 openclaw_bak_20260325_190324/config/backup-manager.sh
+ create mode 100644 openclaw_bak_20260325_190324/config/config_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/config/config_agent_master_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/identity/credentials_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/identity/extensions_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/identity/identity_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/identity/ssh_keys_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/identity/systemd_services_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/memory/memory_analysis_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/memory/memory_assistant_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/memory/memory_backup_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/memory/memory_customer-service_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/memory/memory_database-manager_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/memory/memory_file-processor_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/memory/memory_main_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/memory/memory_master_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/memory/memory_memory-manager_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/memory/memory_monitoring_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/memory/memory_server-maintenance_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/memory/memory_shared_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/migration/MIGRATION-README.md
+ create mode 100644 openclaw_bak_20260325_190324/migration/RESTORE.md
+ create mode 100644 openclaw_bak_20260325_190324/migration/migration_scripts_20260325_190324.tar.gz
+ create mode 100755 openclaw_bak_20260325_190324/migration/restore-from-github.sh
+ create mode 100644 openclaw_bak_20260325_190324/system/crontab_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/system/crontab_20260325_190324.txt
+ create mode 100755 openclaw_bak_20260325_190324/system/scripts/backup-manager.sh
+ create mode 100644 openclaw_bak_20260325_190324/system/system_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260325_190324/system/systemd_overrides_20260325_190324.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/agents/assistant_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/backup-stats.json
+ create mode 100644 openclaw_bak_20260326_033001/checksums.sha256
+ create mode 100644 openclaw_bak_20260326_033001/config/.backup_cache.json
+ create mode 100755 openclaw_bak_20260326_033001/config/backup-manager.sh
+ create mode 100644 openclaw_bak_20260326_033001/config/config_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/config/config_agent_master_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/identity/credentials_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/identity/extensions_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/identity/identity_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/identity/ssh_keys_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/identity/systemd_services_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/memory/memory_analysis_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/memory/memory_assistant_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/memory/memory_backup_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/memory/memory_customer-service_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/memory/memory_database-manager_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/memory/memory_file-processor_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/memory/memory_main_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/memory/memory_master_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/memory/memory_memory-manager_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/memory/memory_monitoring_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/memory/memory_server-maintenance_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/memory/memory_shared_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/migration/MIGRATION-README.md
+ create mode 100644 openclaw_bak_20260326_033001/migration/RESTORE.md
+ create mode 100644 openclaw_bak_20260326_033001/migration/migration_scripts_20260326_033001.tar.gz
+ create mode 100755 openclaw_bak_20260326_033001/migration/restore-from-github.sh
+ create mode 100644 openclaw_bak_20260326_033001/system/crontab_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/system/crontab_20260326_033001.txt
+ create mode 100755 openclaw_bak_20260326_033001/system/scripts/backup-manager.sh
+ create mode 100644 openclaw_bak_20260326_033001/system/system_20260326_033001.tar.gz
+ create mode 100644 openclaw_bak_20260326_033001/system/systemd_overrides_20260326_033001.tar.gz
+fatal: could not read Username for 'https://github.com': No such device or address
+[0;32m[INFO][0m ⚠ GitHub push failed (network or SSH key issue)
+[0;32m[INFO][0m 生成备份趋势报告...
+[0;32m[INFO][0m 趋势报告已生成：/root/.openclaw/backups-unified/logs/backup-trend-report.txt
+[0;32m[INFO][0m Unified backup completed! Bundle: /root/.openclaw/backups-unified/openclaw_bak_20260326_033001 (graded retention: 7d/4w/12m)
+[0;32m[INFO][0m Starting unified backup - openclaw_bak_20260327_033001 (type: full)
+[0;32m[INFO][0m 备份 analysis (检测到变更)
+[0;32m[INFO][0m 备份 assistant (检测到变更)
+[0;32m[INFO][0m 备份 backup (检测到变更)
+[0;32m[INFO][0m ⊘ 跳过 customer-service (无变更)
+[0;32m[INFO][0m 备份 database-manager (检测到变更)
+[0;32m[INFO][0m 备份 file-processor (检测到变更)
+[0;32m[INFO][0m ⊘ 跳过 memory-manager (无变更)
+[0;32m[INFO][0m 备份 monitoring (检测到变更)
+[0;32m[INFO][0m ⊘ 跳过 server-maintenance (无变更)
+[0;32m[INFO][0m ⊘ 跳过 main (无变更)
+[0;32m[INFO][0m 备份身份认证和扩展配置...
+[0;32m[INFO][0m ✓ identity/ 已备份
+[0;32m[INFO][0m ✓ credentials/ 已备份
+[0;32m[INFO][0m ✓ extensions/ 已备份（不含 node_modules）
+[0;32m[INFO][0m ✓ SSH 密钥已备份
+[0;32m[INFO][0m ✓ systemd 服务文件已备份
+[0;32m[INFO][0m ✓ 迁移恢复脚本已备份
+[0;32m[INFO][0m ✓ 迁移指南已备份
+[0;32m[INFO][0m ✓ 恢复文档已备份
+[0;32m[INFO][0m ✓ 迁移工具包已打包
+[0;32m[INFO][0m 执行分级保留策略清理...
+[0;32m[INFO][0m 保留策略：每日7份 + 每周4份 + 每月12份
+[0;32m[INFO][0m 备份分类：每日8份，每周0份，每月0份
+[0;32m[INFO][0m 清理 1 份超期的每日备份
+[0;32m[INFO][0m 共删除 1 份备份
+[0;32m[INFO][0m 删除：openclaw_bak_20260325_132045
+[0;32m[INFO][0m Verifying backup integrity...
+[0;32m[INFO][0m ✓ analysis_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ assistant_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ backup_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ database-manager_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ file-processor_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ monitoring_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ config_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ config_agent_master_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ credentials_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ extensions_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ identity_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ ssh_keys_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ systemd_services_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_analysis_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_assistant_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_backup_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_customer-service_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_database-manager_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_file-processor_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_main_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_master_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_memory-manager_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_monitoring_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_server-maintenance_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ memory_shared_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ migration_scripts_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ crontab_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ system_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m ✓ systemd_overrides_20260327_033001.tar.gz - OK
+[0;32m[INFO][0m 备份缓存已保存
+[0;32m[INFO][0m 生成备份统计报告...
+[0;32m[INFO][0m 统计报告已生成：/root/.openclaw/backups-unified/openclaw_bak_20260327_033001/backup-stats.json
+[0;32m[INFO][0m Generating checksum manifest...
+[0;32m[INFO][0m Backup verification PASSED: All files intact
+[main 14ecf27] 📦 Backup bundle: openclaw_bak_20260327_033001 (graded retention: 7d/4w/12m)
+ 77 files changed, 5484 insertions(+)
+ create mode 100644 openclaw_bak_20260326_113338/agents/analysis_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/agents/assistant_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/agents/customer-service_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/agents/database-manager_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/agents/file-processor_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/agents/memory-manager_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/agents/server-maintenance_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/backup-stats.json
+ create mode 100644 openclaw_bak_20260326_113338/checksums.sha256
+ create mode 100644 openclaw_bak_20260326_113338/config/.backup_cache.json
+ create mode 100755 openclaw_bak_20260326_113338/config/backup-manager.sh
+ create mode 100644 openclaw_bak_20260326_113338/config/config_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/config/config_agent_master_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/identity/credentials_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/identity/extensions_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/identity/identity_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/identity/ssh_keys_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/identity/systemd_services_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/memory/memory_analysis_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/memory/memory_assistant_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/memory/memory_backup_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/memory/memory_customer-service_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/memory/memory_database-manager_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/memory/memory_file-processor_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/memory/memory_main_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/memory/memory_master_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/memory/memory_memory-manager_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/memory/memory_monitoring_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/memory/memory_server-maintenance_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/memory/memory_shared_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/migration/MIGRATION-README.md
+ create mode 100644 openclaw_bak_20260326_113338/migration/RESTORE.md
+ create mode 100644 openclaw_bak_20260326_113338/migration/migration_scripts_20260326_113338.tar.gz
+ create mode 100755 openclaw_bak_20260326_113338/migration/restore-from-github.sh
+ create mode 100644 openclaw_bak_20260326_113338/system/crontab_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/system/crontab_20260326_113338.txt
+ create mode 100755 openclaw_bak_20260326_113338/system/scripts/backup-manager.sh
+ create mode 100644 openclaw_bak_20260326_113338/system/system_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260326_113338/system/systemd_overrides_20260326_113338.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/agents/analysis_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/agents/assistant_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/agents/backup_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/agents/database-manager_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/agents/file-processor_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/agents/monitoring_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/backup-stats.json
+ create mode 100644 openclaw_bak_20260327_033001/checksums.sha256
+ create mode 100644 openclaw_bak_20260327_033001/config/.backup_cache.json
+ create mode 100755 openclaw_bak_20260327_033001/config/backup-manager.sh
+ create mode 100644 openclaw_bak_20260327_033001/config/config_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/config/config_agent_master_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/identity/credentials_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/identity/extensions_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/identity/identity_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/identity/ssh_keys_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/identity/systemd_services_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/memory/memory_analysis_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/memory/memory_assistant_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/memory/memory_backup_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/memory/memory_customer-service_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/memory/memory_database-manager_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/memory/memory_file-processor_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/memory/memory_main_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/memory/memory_master_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/memory/memory_memory-manager_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/memory/memory_monitoring_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/memory/memory_server-maintenance_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/memory/memory_shared_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/migration/MIGRATION-README.md
+ create mode 100644 openclaw_bak_20260327_033001/migration/RESTORE.md
+ create mode 100644 openclaw_bak_20260327_033001/migration/migration_scripts_20260327_033001.tar.gz
+ create mode 100755 openclaw_bak_20260327_033001/migration/restore-from-github.sh
+ create mode 100644 openclaw_bak_20260327_033001/system/crontab_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/system/crontab_20260327_033001.txt
+ create mode 100755 openclaw_bak_20260327_033001/system/scripts/backup-manager.sh
+ create mode 100644 openclaw_bak_20260327_033001/system/system_20260327_033001.tar.gz
+ create mode 100644 openclaw_bak_20260327_033001/system/systemd_overrides_20260327_033001.tar.gz
+fatal: could not read Username for 'https://github.com': No such device or address
+[0;32m[INFO][0m ⚠ GitHub push failed (network or SSH key issue)
+[0;32m[INFO][0m 生成备份趋势报告...
+[0;32m[INFO][0m 趋势报告已生成：/root/.openclaw/backups-unified/logs/backup-trend-report.txt
+[0;32m[INFO][0m Unified backup completed! Bundle: /root/.openclaw/backups-unified/openclaw_bak_20260327_033001 (graded retention: 7d/4w/12m)

@@ -1,16 +1,42 @@
 # 🚀 OpenClaw 一键迁移指南
 
+**版本**: 2.0 (2026-03-25 更新)  
+**重要**: 恢复脚本已纳入自动备份，每次备份都会包含最新版本
+
+---
+
+## 📦 恢复脚本位置
+
+| 来源 | 位置 | 说明 |
+|------|------|------|
+| **GitHub** | `restore-from-github.sh` | 根目录下，可直接访问 |
+| **备份中** | `migration/migration_scripts_*.tar.gz` | 每次备份自动包含 |
+| **本地** | `/root/.openclaw/backups-unified/restore-from-github.sh` | 源文件 |
+
+---
+
 ## 快速开始（3 步完成迁移）
 
-### 步骤 1: 在新服务器上执行恢复脚本
+### 方式 A: 从 GitHub 下载（推荐）
 
 ```bash
-# 方法 A: 直接执行（推荐）
+# 方法 1: 直接执行
 curl -fsSL https://raw.githubusercontent.com/ybkin1/ybkin1_openclaw_bak/main/restore-from-github.sh | bash
 
-# 方法 B: 如果 curl 不可用
+# 方法 2: 下载后执行
 wget -O restore.sh https://raw.githubusercontent.com/ybkin1/ybkin1_openclaw_bak/main/restore-from-github.sh
 bash restore.sh
+```
+
+### 方式 B: 从备份恢复（无需网络）
+
+```bash
+# 1. 下载最新备份 bundle
+# 2. 解压迁移工具包
+tar -xzf migration/migration_scripts_*.tar.gz -C /tmp
+
+# 3. 执行恢复脚本
+bash /tmp/restore-from-github.sh
 ```
 
 ### 步骤 2: 按提示操作

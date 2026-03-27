@@ -444,6 +444,162 @@ discover_agents() {
     echo "${agents[@]}"
 }
 
+# =============================================================================
+# PHASE: Identity & Credentials Backup (P4 Security Fix - 2026-03-25)
+# =============================================================================
+# Backup identity, credentials, extensions config, SSH keys, and systemd services
+# This enables complete migration to new servers
+
+# P0 Fix - 2026-03-27: 备份数据库（记忆架构核心数据）
+backup_database() {
+    log_info "备份数据库（P0 关键修复）..."
+    mkdir -p "$BUNDLE_DIR/database"
+    
+    local db_count=0
+    
+    # 1. SQLite 记忆数据库
+    if [ -f "$WORKSPACE_ROOT/agents/master/memory.db" ]; then
+        cp "$WORKSPACE_ROOT/agents/master/memory.db" "$BUNDLE_DIR/database/"
+        log_info "  ✓ memory.db (SQLite 记忆数据库)"
+        db_count=$((db_count + 1))
+    else
+        log_warn "  ⚠ memory.db 不存在（记忆架构未初始化）"
+    fi
+    
+    # 2. LanceDB 向量库
+    if [ -d "$WORKSPACE_ROOT/agents/master/memory_vectors.lance" ]; then
+        tar -czf "$BUNDLE_DIR/database/vectors.tar.gz" \
+            -C "$WORKSPACE_ROOT/agents/master" memory_vectors.lance
+        log_info "  ✓ memory_vectors.lance (向量索引)"
+        db_count=$((db_count + 1))
+    else
+        log_warn "  ⚠ memory_vectors.lance 不存在（向量库未初始化）"
+    fi
+    
+    # 3. 其他 Agent 的数据库（如果存在）
+    for agent_dir in "$WORKSPACE_ROOT/agents"/*/; do
+        agent_name=$(basename "$agent_dir")
+        if [ -f "$agent_dir/memory.db" ]; then
+            cp "$agent_dir/memory.db" "$BUNDLE_DIR/database/${agent_name}_memory.db"
+            log_info "  ✓ ${agent_name}_memory.db"
+            db_count=$((db_count + 1))
+        fi
+    done
+    
+    if [ $db_count -eq 0 ]; then
+        log_warn "  ⚠ 未找到任何数据库文件（记忆架构尚未初始化）"
+        log_info "  → 数据库目录已创建，初始化后将自动备份"
+    else
+        log_info "  ✓ 共备份 $db_count 个数据库文件"
+    fi
+}
+
+# P1 Fix - 2026-03-27: 备份依赖包列表（用于新服务器环境重建）
+backup_dependencies() {
+    log_info "备份依赖包列表（P1 优化）..."
+    mkdir -p "$BUNDLE_DIR/config/dependencies"
+    
+    # 1. Node.js 全局包
+    if command -v npm &> /dev/null; then
+        npm list -g --depth=0 > "$BUNDLE_DIR/config/dependencies/npm_global_packages.txt" 2>/dev/null || true
+        log_info "  ✓ npm 全局包列表"
+    fi
+    
+    # 2. pnpm 全局包
+    if command -v pnpm &> /dev/null; then
+        pnpm list -g --depth=0 > "$BUNDLE_DIR/config/dependencies/pnpm_global_packages.txt" 2>/dev/null || true
+        log_info "  ✓ pnpm 全局包列表"
+    fi
+    
+    # 3. Python 包
+    if command -v pip3 &> /dev/null; then
+        pip3 list --format=freeze > "$BUNDLE_DIR/config/dependencies/python_packages.txt" 2>/dev/null || true
+        log_info "  ✓ Python 包列表"
+    fi
+    
+    # 4. OpenClaw CLI 版本
+    if command -v openclaw &> /dev/null; then
+        openclaw --version > "$BUNDLE_DIR/config/dependencies/openclaw_version.txt" 2>/dev/null || true
+        log_info "  ✓ OpenClaw CLI 版本"
+    fi
+    
+    # 5. Node.js 版本
+    if command -v node &> /dev/null; then
+        node --version > "$BUNDLE_DIR/config/dependencies/node_version.txt"
+        log_info "  ✓ Node.js 版本"
+    fi
+    
+    # 6. pnpm 版本
+    if command -v pnpm &> /dev/null; then
+        pnpm --version > "$BUNDLE_DIR/config/dependencies/pnpm_version.txt"
+        log_info "  ✓ pnpm 版本"
+    fi
+    
+    log_info "依赖包备份完成"
+}
+
+backup_identity() {
+    log_info "备份身份认证和扩展配置..."
+    mkdir -p "$BUNDLE_DIR/identity"
+    
+    # 1. Identity files (device ID + auth keys)
+    if [ -d "/root/.openclaw/identity" ]; then
+        tar -czf "$BUNDLE_DIR/identity/identity_$TIMESTAMP.tar.gz" \
+            -C /root/.openclaw identity/
+        log_info "✓ identity/ 已备份"
+    else
+        log_warn "⚠ identity/ 目录不存在"
+    fi
+    
+    # 2. Credentials (Feishu pairing, allowFrom, etc.)
+    if [ -d "/root/.openclaw/credentials" ]; then
+        tar -czf "$BUNDLE_DIR/identity/credentials_$TIMESTAMP.tar.gz" \
+            -C /root/.openclaw credentials/
+        log_info "✓ credentials/ 已备份"
+    else
+        log_warn "⚠ credentials/ 目录不存在"
+    fi
+    
+    # 3. Extensions configuration (exclude node_modules to save space)
+    if [ -d "/root/.openclaw/extensions" ]; then
+        tar -czf "$BUNDLE_DIR/identity/extensions_$TIMESTAMP.tar.gz" \
+            -C /root/.openclaw \
+            --exclude='extensions/*/node_modules' \
+            --exclude='extensions/.openclaw-install-backups' \
+            extensions/
+        log_info "✓ extensions/ 已备份（不含 node_modules）"
+    else
+        log_warn "⚠ extensions/ 目录不存在"
+    fi
+    
+    # 4. SSH keys (for GitHub push)
+    if [ -f "/root/.ssh/id_ed25519" ]; then
+        tar -czf "$BUNDLE_DIR/identity/ssh_keys_$TIMESTAMP.tar.gz" \
+            -C /root/.ssh \
+            id_ed25519 id_ed25519.pub \
+            id_ed25519_openclaw_backup id_ed25519_openclaw_backup.pub 2>/dev/null || \
+        tar -czf "$BUNDLE_DIR/identity/ssh_keys_$TIMESTAMP.tar.gz" \
+            -C /root/.ssh id_ed25519 id_ed25519.pub
+        log_info "✓ SSH 密钥已备份"
+    else
+        log_warn "⚠ 未找到 SSH 密钥 /root/.ssh/id_ed25519"
+    fi
+    
+    # 5. Systemd service files (complete .service files, not just overrides)
+    if [ -d "$HOME/.config/systemd/user" ]; then
+        cd "$HOME/.config/systemd/user"
+        find . -name "openclaw-*.service" -print0 | \
+            tar -czf "$BUNDLE_DIR/identity/systemd_services_$TIMESTAMP.tar.gz" \
+            --null -T - 2>/dev/null || true
+        if [ -f "$BUNDLE_DIR/identity/systemd_services_$TIMESTAMP.tar.gz" ]; then
+            log_info "✓ systemd 服务文件已备份"
+        else
+            log_warn "⚠ 未找到 systemd 服务文件"
+        fi
+        cd - > /dev/null
+    fi
+}
+
 case $BACKUP_TYPE in
     full)
         # Backup all agents into bundle (with incremental optimization - P2 Fix)
@@ -482,17 +638,51 @@ case $BACKUP_TYPE in
                 -C "$WORKSPACE_ROOT/agents/master" AGENTS.md SOUL.md MEMORY.md HEARTBEAT.md USER.md TOOLS.md 2>/dev/null || true
         fi
         
-        # Backup system-wide (skills, scripts, crontab, systemd overrides, backup-manager.sh)
+        # P4 Security Fix - 2026-03-25: Backup identity & credentials (for complete migration)
+        backup_identity
+        
+        # P0 Fix - 2026-03-27: Backup database (memory architecture core data)
+        backup_database
+        
+        # P1 Fix - 2026-03-27: Backup dependencies (for environment reconstruction)
+        backup_dependencies
+        
+        # Backup system-wide (skills, scripts, crontab, systemd overrides, backup-manager.sh, migration scripts)
         mkdir -p "$BUNDLE_DIR/system/scripts"
+        mkdir -p "$BUNDLE_DIR/migration"
         
         # Copy backup-manager.sh to system/scripts (ensures latest version is backed up)
         cp "$0" "$BUNDLE_DIR/system/scripts/backup-manager.sh"
         chmod +x "$BUNDLE_DIR/system/scripts/backup-manager.sh"
         
+        # Copy migration scripts to migration/ (ensures one-click restore is available)
+        if [ -f "$BACKUP_ROOT/restore-from-github.sh" ]; then
+            cp "$BACKUP_ROOT/restore-from-github.sh" "$BUNDLE_DIR/migration/"
+            chmod +x "$BUNDLE_DIR/migration/restore-from-github.sh"
+            log_info "✓ 迁移恢复脚本已备份"
+        fi
+        
+        if [ -f "$BACKUP_ROOT/MIGRATION-README.md" ]; then
+            cp "$BACKUP_ROOT/MIGRATION-README.md" "$BUNDLE_DIR/migration/"
+            log_info "✓ 迁移指南已备份"
+        fi
+        
+        if [ -f "$BACKUP_ROOT/RESTORE.md" ]; then
+            cp "$BACKUP_ROOT/RESTORE.md" "$BUNDLE_DIR/migration/"
+            log_info "✓ 恢复文档已备份"
+        fi
+        
         if [ -d "$WORKSPACE_ROOT/agents/master" ]; then
             tar -czf "$BUNDLE_DIR/system/system_$TIMESTAMP.tar.gz" \
                 -C "$WORKSPACE_ROOT/agents/master" skills/ scripts/ \
                 -C "$BUNDLE_DIR/system" scripts/backup-manager.sh 2>/dev/null || true
+        fi
+        
+        # Backup migration scripts as separate archive
+        if [ -d "$BUNDLE_DIR/migration" ] && [ "$(ls -A "$BUNDLE_DIR/migration" 2>/dev/null)" ]; then
+            tar -czf "$BUNDLE_DIR/migration/migration_scripts_$TIMESTAMP.tar.gz" \
+                -C "$BUNDLE_DIR/migration" . 2>/dev/null || true
+            log_info "✓ 迁移工具包已打包"
         fi
         # Backup crontab (multiple methods for compatibility)
         if [ -f "/var/spool/cron/crontabs/$(whoami)" ]; then
@@ -553,15 +743,35 @@ case $BACKUP_TYPE in
         ;;
 
     system)
-        # Backup system-wide with latest backup-manager.sh
+        # Backup system-wide with latest backup-manager.sh and migration scripts
         mkdir -p "$BUNDLE_DIR/system/scripts"
+        mkdir -p "$BUNDLE_DIR/migration"
+        
         cp "$0" "$BUNDLE_DIR/system/scripts/backup-manager.sh"
         chmod +x "$BUNDLE_DIR/system/scripts/backup-manager.sh"
+        
+        # Copy migration scripts
+        if [ -f "$BACKUP_ROOT/restore-from-github.sh" ]; then
+            cp "$BACKUP_ROOT/restore-from-github.sh" "$BUNDLE_DIR/migration/"
+            chmod +x "$BUNDLE_DIR/migration/restore-from-github.sh"
+        fi
+        if [ -f "$BACKUP_ROOT/MIGRATION-README.md" ]; then
+            cp "$BACKUP_ROOT/MIGRATION-README.md" "$BUNDLE_DIR/migration/"
+        fi
+        if [ -f "$BACKUP_ROOT/RESTORE.md" ]; then
+            cp "$BACKUP_ROOT/RESTORE.md" "$BUNDLE_DIR/migration/"
+        fi
         
         if [ -d "$WORKSPACE_ROOT/agents/master" ]; then
             tar -czf "$BUNDLE_DIR/system/system_$TIMESTAMP.tar.gz" \
                 -C "$WORKSPACE_ROOT/agents/master" skills/ scripts/ \
                 -C "$BUNDLE_DIR/system" scripts/backup-manager.sh 2>/dev/null || true
+        fi
+        
+        # Backup migration scripts
+        if [ -d "$BUNDLE_DIR/migration" ] && [ "$(ls -A "$BUNDLE_DIR/migration" 2>/dev/null)" ]; then
+            tar -czf "$BUNDLE_DIR/migration/migration_scripts_$TIMESTAMP.tar.gz" \
+                -C "$BUNDLE_DIR/migration" . 2>/dev/null || true
         fi
         
         # Backup crontab (multiple methods for compatibility)
@@ -671,8 +881,8 @@ if [ "$PUSH_TO_GITHUB" = true ]; then
     if ! git diff --cached --quiet; then
         git commit -m "📦 Backup bundle: $BUNDLE_NAME (graded retention: ${RETAIN_DAILY}d/${RETAIN_WEEKLY}w/${RETAIN_MONTHLY}m)"
         
-        # Push to GitHub
-        if git push origin main 2>&1; then
+        # Push to GitHub with SSH key
+        if GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519_openclaw_backup -o IdentitiesOnly=yes" git push origin main 2>&1; then
             log_info "✓ GitHub sync successful"
         else
             log_info "⚠ GitHub push failed (network or SSH key issue)"

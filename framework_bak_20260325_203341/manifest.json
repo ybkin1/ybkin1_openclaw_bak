@@ -1,0 +1,10 @@
+{
+    "type": "framework",
+    "version": "1.0",
+    "created": "2026-03-25T20:33:41+08:00",
+    "components": ["architecture", "workflows", "rules"],
+    "excluded": ["openclaw.json", "agent.json", "models.json", "memory/daily", "memory/short_term"],
+    "safety_level": "high",
+    "restore_time": "15-20 minutes",
+    "purpose": "Domain switching and architecture versioning"
+}
