@@ -9,14 +9,14 @@
 #   bash offline-restore.sh /tmp/openclaw_bak_20260327_174150 /home/admin/.openclaw
 # =============================================================================
 
-set -euo pipefail
+set -eo pipefail
 
 #=========== 配置区 ===========
 SCRIPT_NAME="OpenClaw 离线恢复脚本"
 VERSION="1.0.0"
 
-# 智能检测安装目录
-if [ -n "$OPENCLAW_ROOT" ]; then
+# 智能检测安装目录（使用安全方式处理未定义变量）
+if [ -n "${OPENCLAW_ROOT:-}" ]; then
     TARGET_ROOT="$OPENCLAW_ROOT"
 elif [ -d "/root/.openclaw" ]; then
     TARGET_ROOT="/root/.openclaw"
@@ -25,8 +25,17 @@ elif [ -d "$HOME/.openclaw" ]; then
 elif [ -d "/home/admin/.openclaw" ]; then
     TARGET_ROOT="/home/admin/.openclaw"
 else
+    # 默认值，如果不存在会创建
     TARGET_ROOT="/root/.openclaw"
 fi
+
+# 确保 TARGET_ROOT 有值
+if [ -z "$TARGET_ROOT" ]; then
+    log_warn "OPENCLAW_ROOT 未设置，使用默认值：/root/.openclaw"
+    TARGET_ROOT="/root/.openclaw"
+fi
+
+log_info "目标目录：$TARGET_ROOT"
 
 # 颜色输出
 RED='\033[0;31m'
@@ -127,15 +136,16 @@ show_backup_info() {
 restore_config() {
     log_step "恢复配置文件..."
     
-    if [ -f "$BACKUP_PATH/config/config_"*".tar.gz" ]; then
-        tar -xzf "$BACKUP_PATH"/config/config_*.tar.gz -C "$TARGET_ROOT/workspace/agents/master/"
-        log_info "✓ 配置文件已恢复"
-    fi
+    # 确保目标目录存在
+    mkdir -p "$TARGET_ROOT/workspace/agents/master/"
     
-    if [ -f "$BACKUP_PATH/config/config_agent_master_"*".tar.gz" ]; then
-        tar -xzf "$BACKUP_PATH"/config/config_agent_master_*.tar.gz -C "$TARGET_ROOT/workspace/agents/master/"
-        log_info "✓ Agent 配置已恢复"
-    fi
+    # 使用 ls 和 for 循环代替 glob
+    for config_tar in "$BACKUP_PATH"/config/config_*.tar.gz; do
+        if [ -f "$config_tar" ]; then
+            tar -xzf "$config_tar" -C "$TARGET_ROOT/workspace/agents/master/"
+        fi
+    done
+    log_info "✓ 配置文件已恢复"
 }
 
 #=========== 恢复 Agent 代码 ===========
@@ -352,6 +362,7 @@ main() {
     
     # 创建目标目录
     log_step "创建目录结构..."
+    log_info "目标根目录：$TARGET_ROOT"
     mkdir -p "$TARGET_ROOT"/{workspace,backups-unified,logs}
     mkdir -p "$TARGET_ROOT/workspace/agents"
     log_info "✓ 目录已创建"
