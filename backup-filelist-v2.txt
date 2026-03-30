@@ -1,0 +1,91 @@
+# OpenClaw 备份文件清单 v2.0
+# 生成时间：2026-03-30
+# 用途：GitHub 备份
+# 包含：今日新增的 14 个核心模块
+
+## P0 - 核心配置 (立即备份)
+
+# openclaw.json (加密版本在 P0-core/)
+/root/.openclaw/openclaw.json
+
+# Agent 核心配置
+/root/.openclaw/workspace/agents/master/AGENTS.md
+/root/.openclaw/workspace/agents/master/SOUL.md
+/root/.openclaw/workspace/agents/master/USER.md
+/root/.openclaw/workspace/agents/master/HEARTBEAT.md
+/root/.openclaw/workspace/agents/master/IDENTITY.md
+/root/.openclaw/workspace/agents/master/TOOLS.md
+/root/.openclaw/workspace/agents/master/MEMORY.md
+
+## P1 - Agent 代码 (今日新增)
+
+# 安全模块
+/root/.openclaw/workspace/agents/master/src/security/encryption.py
+/root/.openclaw/workspace/agents/master/src/security/rbac.py
+/root/.openclaw/workspace/agents/master/src/security/auth.py
+
+# 租户模块
+/root/.openclaw/workspace/agents/master/src/tenancy/tenant_middleware.py
+
+# Agent 模块
+/root/.openclaw/workspace/agents/master/src/agents/master_sla.py
+/root/.openclaw/workspace/agents/master/src/agents/assistant_agent.py
+/root/.openclaw/workspace/agents/master/src/agents/file_processor_agent.py
+/root/.openclaw/workspace/agents/master/src/agents/database_agent.py
+/root/.openclaw/workspace/agents/master/src/agents/monitoring_agent.py
+/root/.openclaw/workspace/agents/master/src/agents/communication_framework.py
+
+# 依赖管理
+/root/.openclaw/workspace/agents/master/requirements.txt
+
+## P1 - 测试脚本
+
+# 集成测试
+/root/.openclaw/workspace/agents/master/tests/integration/test_all_modules.py
+
+# 端到端测试
+/root/.openclaw/workspace/agents/master/tests/e2e/test_scenarios.py
+
+## P1 - 文档
+
+# 架构设计
+/root/.openclaw/workspace/agents/master/docs/ARCHITECTURE-REFACTOR-PLAN.md
+/root/.openclaw/workspace/agents/master/docs/BACKUP-FRAMEWORK-v2.md
+/root/.openclaw/workspace/agents/master/docs/BACKUP-FRAMEWORK-IMPLEMENTATION.md
+
+# 进度跟踪
+/root/.openclaw/workspace/agents/master/docs/EXECUTION-TRACKER.md
+
+# 质量审计
+/root/.openclaw/workspace/agents/master/docs/CODE-AUDIT-REPORT.md
+/root/.openclaw/workspace/agents/master/docs/OPTIMIZATION-REPORT.md
+
+# 总结报告
+/root/.openclaw/workspace/agents/master/docs/WEEK1-SUMMARY.md
+/root/.openclaw/workspace/agents/master/docs/DAY1-COMPLETION.md
+/root/.openclaw/workspace/agents/master/docs/FINAL-REPORT-DAY1.md
+/root/.openclaw/workspace/agents/master/docs/FINAL-REPORT-DAY1-v2.md
+
+# 数据库设计
+/root/.openclaw/workspace/agents/master/docs/schema.sql
+
+## P1 - 备份脚本
+
+/root/.openclaw/backups-unified/scripts/backup-p0.sh
+/root/.openclaw/backups-unified/scripts/backup-manager.sh
+/root/.openclaw/backups-unified/scripts/backup-framework.sh
+
+## P2 - 记忆数据 (选择性备份)
+
+/root/.openclaw/workspace/agents/master/memory/daily/2026-03-30.md
+/root/.openclaw/workspace/agents/master/MEMORY.md
+
+## 排除项
+
+# 不备份：
+# - *.pyc (编译文件)
+# - __pycache__/ (缓存)
+# - *.log (日志文件)
+# - .git/ (Git 元数据)
+# - node_modules/ (依赖)
+# - P0-core/*.enc (加密文件，单独备份)
